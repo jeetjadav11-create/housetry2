@@ -16,7 +16,7 @@ public class Picture
     private Triangle roof;
     private Circle sun;
     private boolean drawn;
-    private Circle sun2;
+    private int yPosition;
 
     /**
      * Constructor for objects of class Picture
@@ -27,7 +27,6 @@ public class Picture
         window = new Square();
         roof = new Triangle();  
         sun = new Circle();
-        sun2 = new Circle();
         drawn = false;
     }
 
@@ -53,17 +52,11 @@ public class Picture
             roof.moveVertical(-60);
             roof.makeVisible();
     
-            sun.changeColor("red");
+            sun.changeColor("blue");
             sun.moveHorizontal(100);
             sun.moveVertical(-40);
             sun.changeSize(80);
             sun.makeVisible();
-            
-            sun2.changeColor("yellow");
-            sun2.moveHorizontal(10);
-            sun2.moveVertical(-40);
-            sun2.changeSize(80);
-            sun2.makeVisible();
             drawn = true;
         }
     }
@@ -80,6 +73,29 @@ public class Picture
     }
 
     /**
+     * Slowly move the circle vertically by 'distance' pixels.
+     */
+    public void slowMoveVertical(int distance)
+    {
+        int delta;
+
+        if(distance < 0) 
+        {
+            delta = -1;
+            distance = -distance;
+        }
+        else 
+        {
+            delta = 1;
+        }
+
+        for(int i = 0; i < distance; i++)
+        {
+            yPosition += delta;
+            draw();
+        }
+    }
+    /**
      * Change this picture to use color display
      */
     public void setColor()
@@ -87,7 +103,6 @@ public class Picture
         wall.changeColor("red");
         window.changeColor("black");
         roof.changeColor("green");
-        sun.changeColor("red");
-        sun.changeColor("yellow");
+        sun.changeColor("blue");
     }
 }
