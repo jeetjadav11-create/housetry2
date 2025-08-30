@@ -9,7 +9,8 @@
  * @author  Michael Kšlling and David J. Barnes
  * @version 7.0
  */
-public class Picture
+public class Picture extends Person
+
 {
     private Square wall;
     private Square window;
@@ -28,6 +29,19 @@ public class Picture
         roof = new Triangle();  
         sun = new Circle();
         drawn = false;
+    }
+
+    /**
+     * Create a new person at default position with default color.
+     */
+    public void person()
+    {
+        height = 60;
+        width = 30;
+        xPosition = 280;
+        yPosition = 190;
+        color = "black";
+        isVisible = false;
     }
 
     /**
